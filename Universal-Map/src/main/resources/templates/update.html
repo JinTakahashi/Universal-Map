@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Update Your Account</title>
+	<!--  -->
+	<link href="css/reset.css" rel="stylesheet">
+	<link href="css/create_update_login.css" rel="stylesheet">
+	<!--  -->
+	<link th:href="@{/css/create_update_login.css}" rel="stylesheet">
+	<link th:href="@{/css/reset.css}" rel="stylesheet">
+</head>
+<body>
+	<header>
+		<div>
+			<a th:href="@{/setting(id=${user.id}, language=${option.language}, 
+			wheelchair=${option.wheelchair}, stroller=${option.stroller}, 
+			senior=${option.senior}, slope=${option.slope}, speed=${option.speed})}" 
+			class="close_button header__hamburger hamburger">
+				<span></span>
+				<span></span>
+			</a>
+		</div>
+    </header>
+
+	<div class="account_container">
+		<h1>Update Your Account</h1>
+		<form th:action = "@{/update}" method = "post" th:object = "${userUpdateForm}">
+			<div>
+				<label for = "userName">UserName</label>
+				<input id = "userName" type = "text" th:field = "*{userName}" required>
+			</div>
+			<div>
+				<label for = "loginId">LoginID</label>
+				<input id = "loginId" type = "text" th:field = "*{loginId}" required>
+			</div>
+			<div>
+				<label for = "password">Password</label>
+				<input id = "password" type = "text" th:field = "*{password}" required>
+			</div>
+			<div style="display: none;">
+				<input id="id" type="text" th:field="*{id}">
+			</div>
+			<div class="form_bottom">
+				<div>
+					<input type = "submit" value = "Update">
+				</div>
+				<div>
+					<a th:href="@{/delete(id=${user.id})}">delete this account</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

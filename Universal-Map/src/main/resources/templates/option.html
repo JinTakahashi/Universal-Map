@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>Set Your Options</title>
+	<!--  -->
+	<link href="css/reset.css" rel="stylesheet">
+	<link href="css/option.css" rel="stylesheet">
+	<!--  -->
+	<link th:href="@{/css/setting.css}" rel="stylesheet">
+	<link th:href="@{/css/reset.css}" rel="stylesheet">
+</head>
+<body>
+	<div class="option_container">
+		<h1>Set Your Options</h1>
+		<form th:action = "@{/option}" method = "post" th:object = "${optionCreateForm}" class="option_form">
+			<div>
+				<h2 class="option_form_each_title">Route Accessibility</h2>
+				<input id = "wheelchair" type = "checkbox" th:field = "*{wheelchair}" value = "true">
+				<label class="option_label" for = "wheelchair">wheelchair</label>
+				<input id = "stroller" type = "checkbox" th:field = "*{stroller}" value = "true">
+				<label class="option_label" for = "stroller">stroller</label>
+				<input id = "senior" type = "checkbox" th:field = "*{senior}" value = "true">
+				<label class="option_label" for = "senior">senior</label>
+			</div>
+			<div>
+				<h2 class="option_form_each_title">Levels of slopes to avoid</h2>
+				<input type="radio" th:field="*{slope}" value="1" id="gentle" name="slope"/>
+				<label class="option_label" for="gentle">Gentle</label>
+				<input type="radio" th:field="*{slope}" value="2" id="moderate" name="slope"/>
+				<label class="option_label" for="moderate">Moderate</label>
+				<input type="radio" th:field="*{slope}" value="3" id="steep" name="slope"/>
+				<label class="option_label" for="steep">Steep</label>
+			</div>
+			<div>
+				<h2 class="option_form_each_title">Movement Speed</h2>
+				<input type="radio" th:field="*{speed}" value="1" id="slow" name="speed"/>
+				<label class="option_label" for="slow">Slow</label>
+				<input type="radio" th:field="*{speed}" value="2" id="normal" name="speed"/>
+				<label class="option_label" for="normal">Normal</label>
+				<input type="radio" th:field="*{speed}" value="3" id="fast" name="speed"/>
+				<label class="option_label" for="fast">Fast</label>
+			</div>
+			<div>
+				<h2 class="option_form_each_title">language</h2><br>
+				<select id="language" th:field="*{language}" class="language_select">
+					<div>
+						<option value="">--Please choose an option--</option>
+	                    <option value="english">English</option>
+	                    <option value="french">Français</option>
+	                    <option value="spanish">español</option>
+	                    <option value="korean">한국어</option>
+					</div>
+				</select>
+			</div>
+			<div style="display: none;">
+				<input id="id" type="text" th:field="*{id}">
+			</div>
+			<div>
+				<input type = "submit" value = "Set" class="option_set">
+			</div>
+		</form>
+	</div>
+</body>
+</html>

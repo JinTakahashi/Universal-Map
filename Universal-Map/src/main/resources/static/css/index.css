@@ -1,0 +1,131 @@
+H�b7�En::placeholder { 
+    color: var(--placeholder-color, black); 
+}
+
+.index_body {
+    height: 100vh;
+    position: relative;
+}
+
+.index_panel {
+    display: flex;
+    width: 98vw;
+    z-index: 1000;
+    border: solid;
+    background-color: #fff;
+    font-size: 30px;
+    margin: 0 auto;
+    border-radius: 15px;
+    position: relative;
+}
+
+.index_panel_left {
+    margin: 10px auto 10px 10px;
+}
+
+.index_panel_left input, 
+.index_panel_left select {
+    font-size: 40px;
+}
+
+.index_panel_left_container {
+    display: flex;
+}
+
+.show_route {
+    position: absolute;
+    height: 68px;
+    padding: 15px 20px;
+    bottom: 10px;
+    right: 10px;
+    font-size: 30px;
+    border-radius: 10px;
+    color: #fff;
+    border-color: #1B6EF3;
+    background-color: #1B6EF3;
+}
+
+#result {
+    display: none;
+}
+.detail {
+    display: none;
+}
+
+.index_panel_right {
+    margin: 10px 20px auto auto;
+    font-size: 40px;
+}
+
+.index_map {
+    width: 98vw;
+    height: 99vh;
+    border: solid;
+    margin-top: 10px;
+    border-radius: 15px;
+}
+
+.detail_lower {
+    position: fixed;
+    width: 98vw;
+    border: solid;
+    border-radius: 35px 35px 0 0;
+    bottom: 0;
+    background-color: #fff;
+    padding: 20px 0;
+    font-size: 30px;
+}
+
+.detail_lower_content {
+    display: flex;
+    width: 100%;
+    padding: 8px;
+}
+
+.duration, .distance {
+    padding: 0 8px;
+}
+
+.duration {
+    margin-left: 5vw;
+}
+
+.distance {
+    margin-left: 5vw;
+}
+
+.duration span, .distance span {
+    font-size: 60px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+
+ul, ol{
+    list-style: none;
+}
+
+#changeRouteList {
+	display: flex;
+	margin-top: 0;
+	margin-bottom: 0;
+	
+}
+
+#changeRouteList li {
+	margin-right: 40px;
+}
+
+@media (min-width:1000px) {
+    .show_route {
+        position: absolute;
+        height: 68px;
+        padding: 15px 20px;
+        bottom: 10px;
+        right: 10px;
+        font-size: 30px;
+        border-radius: 10px;
+        color: #fff;
+        border-color: #111111;
+        background-color: #111111;
+    }
+} 

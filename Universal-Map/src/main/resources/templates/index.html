@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Map</title>
+	<link th:href="@{/css/index.css}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="index_body">
+	<div class="index_panel" id="panel">
+		<div class="index_panel_left">
+			<div class="index_panel_left_container">
+				
+                <table>
+                    <tr class="origin_table">
+                        <td id="origin_content">Origin:</td>
+                        <td><input type="text" id="origin" placeholder="Current Location" required></td>
+                    </tr>
+                    <tr class="destination_table">
+                        <td id="destination_content">Destination:</td>
+                        <td><input type="text" id="destination" placeholder="Enter destination" required></td>
+                    </tr>
+                    <tr class="travelmode_table">
+                        <td id="travelMode">Travel Mode:</td>
+                        <td>
+                            <select id="travelmode">
+                                <option value="WALKING" selected id="walking">Walking</option>
+                                <option value="BICYCLING" id="cycle">Bicycling</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <button class="show_route" onclick="calculateRoute()" id="showButton">Show Route</button>
+            </div>
+            
+            <div id="result">
+                <span id="resultMessage"></span><br>
+                <ul id="changeRouteList"></ul>
+            </div>
+            
+			<div class="detail_upper detail" id="detail">
+				<table>
+					<tr><td>Route:</td><td><span id="targetRoute"></span></td></tr>
+					<tr><td>Difficulty:</td><td><span id="targetDifficulty"></span></td></tr>
+				</table>
+			</div>		 
+       </div>
+
+	   <div class="index_panel_right">
+		   	<div>
+		   		<a th:href="@{/setting(id=${user.id}, 
+		   		language=${option.language}, wheelchair=${option.wheelchair}, 
+		   		stroller=${option.stroller}, senior=${option.senior}, 
+		   		slope=${option.slope}, speed=${option.speed})}">
+		   		<i class="fa-solid fa-gear"></i>
+		   		</a><br>
+		   	</div>
+	   </div>
+	</div>
+
+	
+	<div style="display: none;">
+		<span id="wheelchair" th:text="${option.wheelchair}"></span>
+		<span id="stroller" th:text="${option.stroller}"></span>
+		<span id="senior" th:text="${option.senior}"></span>
+		<span id="slope" th:text="${option.slope}"></span>
+		<span id="speed" th:text="${option.speed}"></span>
+		<span id="language" th:text="${option.language}"></span>
+	</div>
+	
+    <div  class="index_map" id="map"></div>
+	
+	<div class="detail_lower detail">
+		<div class="detail_lower_content">
+			<div class="duration">Duration: <span id="targetDuration"></span></div>
+			<div class="distance">Distance: <span id="targetDistance"></span></div>
+		</div>
+	</div>	
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmH_ie1KvMbTlP2UNCmbpQuR-2h9zKCBQ&loading=defer&libraries=marker" defer></script>
+	<script th:src="@{/js/map.js}" defer></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+.hamburger {
+    width: 50px;
+    height: 100%;
+    margin: 30px 30px 0 0;
+    z-index: 1000;
+    display: block;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3.5px;
+    background-color: #151515;
+    position: relative;
+    transition: ease 0.4s;
+    display: block;
+}
+
+.hamburger span:nth-child(1) {
+    top: 148px;
+    left: calc(88vw - 45px);
+    transform: rotate(45deg);
+}
+
+.hamburger span:nth-child(2) {
+    top: 145px;
+    left: calc(88vw - 45px);
+    transform: rotate(-45deg);
+}
+
+
+
+.account_container {
+    padding: 300px 12vw;
+}
+
+.account_container h1 {
+    font-size: 50px;
+}
+
+form {
+    margin-top: 50px;
+}
+
+form label {
+    display: block;
+    font-size: 25px;
+    margin: 30px 0 10px;
+}
+
+form input[type="text"] {
+    display: block;
+    height: 100px;
+    width:100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 210%;
+    padding: 10px 20px;
+}
+
+.form_bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.form_bottom input {
+    padding: 20px 35px;
+    border-radius: 10px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.form_bottom a {
+    font-size: 25px;
+}
+
+
+@media (min-width:1000px) {
+/*　画面サイズが1000pxからはここを読み込む　*/   
+    .hamburger {
+        width: 50px;
+        height: 100%;
+        margin: 30px 30px 0 0;
+        z-index: 1000;
+        display: block;
+    }
+
+    .hamburger span {
+        width: 100%;
+        height: 3.5px;
+        background-color: #151515;
+        position: relative;
+        transition: ease 0.4s;
+        display: block;
+    }
+
+    .hamburger span:nth-child(1) {
+        top: 65px;
+        left: 66vw;
+        transform: rotate(45deg);
+    }
+
+    .hamburger span:nth-child(2) {
+        top: 62px;
+        left: 66vw;
+        transform: rotate(-45deg);
+    }
+
+    .account_container {
+        padding: 100px 30vw;
+    }
+
+    .account_container h1 {
+        font-size: 30px;
+    }
+
+    form label {
+        font-size: 20px;
+    }
+
+    form input[type="text"] {
+        height: 50px;
+        border-radius: 5px;
+        font-size: 150%;
+    }
+
+    .form_bottom input {
+        padding: 10px 25px;
+        border-radius: 10px;
+        font-size: 20px;
+    }
+    
+    .form_bottom a {
+        font-size: 20px;
+    }
+}
+

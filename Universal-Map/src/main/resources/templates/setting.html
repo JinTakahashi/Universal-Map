@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UniversalGPS-test</title>
+    <link th:href="@{/css/setting.css}" rel="stylesheet">
+    <link th:href="@{/css/reset.css}" rel="stylesheet">
+    <script th:src="@{/js/costom.js}" defer></script>
+</head>
+<body>
+    <header>
+        <a id="back_button" th:href="@{/index(id=${user.id}, language=${option.language}, wheelchair=${option.wheelchair}, stroller=${option.stroller}, senior=${option.senior}, slope=${option.slope}, speed=${option.speed})}" class="close_button header__hamburger hamburger">
+            <span></span>
+            <span></span>
+        </a>
+    </header>
+    <li class="setting_container">
+		<h1 class="lang english">Settings</h1>
+		<h1 class="lang french">Paramètres</h1>
+		<h1 class="lang spanish">Ajustes</h1> 
+		<h1 class="lang korean">설정</h1>
+		<div class="to_delete">
+		    <h2>Language</h2>
+			<select class="language_select" id="language" onchange="changeLanguage()">
+				<th:block th:if="${option.language == 'english'}"><option id="english" value="english" selected>English</option></th:block>
+				<th:block th:if="${option.language != 'english'}"><option id="english" value="english">English</option></th:block>
+				
+				<th:block th:if="${option.language == 'french'}"><option id="french" value="french" selected>Français</option></th:block>
+				<th:block th:if="${option.language != 'french'}"><option id="french" value="french">Français</option></th:block>
+				
+				<th:block th:if="${option.language == 'spanish'}"><option id="spanish" value="spanish" selected>español</option></th:block>
+				<th:block th:if="${option.language != 'spanish'}"><option id="spanish" value="spanish">español</option></th:block>
+				
+				<th:block th:if="${option.language == 'korean'}"><option id="korean" value="korean" selected>한국어</option></th:block>
+				<th:block th:if="${option.language != 'korean'}"><option id="korean" value="korean">한국어</option></th:block>
+			</select>
+		</div>
+		<div class="lang english">
+	        <ul>
+	            <li>
+	                <h2>Account Information</h2>
+	                <div class="info_contents">
+	                    <p>User Name</p>
+	                    <p th:text="${user.userName}"></p>
+	                </div>
+	                <div class="info_contents">
+	                    <p>Login ID</p>
+	                    <p th:text="${user.loginId}"></p>
+	                </div>
+	                <div class="info_contents">
+						<p>Password</p>
+						<p th:text="${password}"></p>
+					</div>
+	                <a th:href="@{/update(id=${user.id}, language=${option.language}, wheelchair=${option.wheelchair}, stroller=${option.stroller}, senior=${option.senior}, slope=${option.slope}, speed=${option.speed})}" class="info_contents">
+	                    <p></p>
+	                    <p>Edit</p>
+	                </a>
+	            </li>
+	            <li>
+	                <h2>Route Accessibility</h2>
+					<div class="option_flex">
+					    <div class="option_container">
+					        <th:block th:if="${option.wheelchair == 'true'}"><input class = "access en" type = "checkbox" value = "true" id="wheelchair" checked></th:block>
+					        <th:block th:if="${option.wheelchair != 'true'}"><input class = "access en" type = "checkbox" value = "true" id="wheelchair"></th:block>
+					        <label class="setting_label" for="wheelchair">wheelchair</label>
+					    </div>
+					    
+					    <div class="option_container">
+					        <th:block th:if="${option.stroller == 'true'}"><input class = "access en" type = "checkbox" value = "true" id="stroller" checked></th:block>
+					        <th:block th:if="${option.stroller != 'true'}"><input class = "access en" type = "checkbox" value = "true" id="stroller"></th:block>
+					        <label class="setting_label" for="stroller">stroller</label>
+					    </div>
+					    
+					    <div class="option_container">
+					        <th:block th:if="${option.senior == 'true'}"><input class = "access en" type = "checkbox" value = "true" id="senior" checked></th:block>
+					        <th:block th:if="${option.senior != 'true'}"><input class = "access en" type = "checkbox" value = "true" id="senior"></th:block>
+					        <label class="setting_label" for="senior">senior</label>
+					    </div>
+					</div>
+	            </li>
+				<li>
+					<h2>Levels of slopes to avoid</h2>
+					
+				    <div class="option_flex">
+				        <div class="option_container">
+				            <th:block th:if="${option.slope == 1}"><input class="slope en" name="slope-en" type="radio" value="1" id="gentle" checked></th:block>
+				            <th:block th:if="${option.slope != 1}"><input class="slope en" name="slope-en" type="radio" value="1" id="gentle"></th:block>
+				            <label class="setting_label" for="gentle">Gentle</label>
+				        </div>
+				        
+				        <div class="option_container">
+				            <th:block th:if="${option.slope == 2}"><input class="slope en" name="slope-en" type="radio" value="2" id="moderate" checked></th:block>
+				            <th:block th:if="${option.slope != 2}"><input class="slope en" name="slope-en" type="radio" value="2" id="moderate"></th:block>
+				            <label class="setting_label" for="moderate">Moderate</label>
+				        </div>
+				        
+				        <div class="option_container">
+				            <th:block th:if="${option.slope == 3}"><input class="slope en" name="slope-en" type="radio" value="3" id="steep" checked></th:block>
+				            <th:block th:if="${option.slope != 3}"><input class="slope en" name="slope-en" type="radio" value="3" id="steep"></th:block>
+				            <label class="setting_label" for="steep">Steep</label>
+				        </div>
+				    </div>
+				</li>
+				<li>
+					<h2>Movement Speed</h2>
+					
+					<div class="option_flex">
+					    <div class="option_container">
+					        <th:block th:if="${option.speed == 1}"><input class="speed en" name="speed-en" type="radio" value="1" id="slow" checked></th:block>
+					        <th:block th:if="${option.speed != 1}"><input class="speed en" name="speed-en" type="radio" value="1" id="slow"></th:block>
+					        <label class="setting_label" for="slow">Slow</label>
+					    </div>
+					    
+					    <div class="option_container">
+					        <th:block th:if="${option.speed == 2}"><input class="speed en" name="speed-en" type="radio" value="2" id="normal" checked></th:block>
+					        <th:block th:if="${option.speed != 2}"><input class="speed en" name="speed-en" type="radio" value="2" id="normal"></th:block>
+					        <label class="setting_label" for="normal">Normal</label>
+					    </div>
+					    
+					    <div class="option_container">
+					        <th:block th:if="${option.speed == 3}"><input class="speed en" name="speed-en" type="radio" value="3" id="fast" checked></th:block>
+					        <th:block th:if="${option.speed != 3}"><input class="speed en" name="speed-en" type="radio" value="3" id="fast"></th:block>
+					        <label class="setting_label" for="fast">Fast</label>
+					    </div>
+					</div>
+				</li>
+	            <li>
+	                <h2>Logout</h2>
+	                <button class="logout" type="button" name="logout" value="logout">
+	                    <a th:href="@{/login}" style="text-decoration:none; color: black;">Logout</a>
+	                </button>
+	            </li>
+	        </ul>
+		</div>
+		
+		<div class="lang french">
+		    <ul>
+		        <li>
+		            <h2>Informations du compte</h2>
+		            <div class="info_contents">
+		                <p>Nom d'utilisateur</p>
+		                <p th:text="${user.userName}"></p>
+		            </div>
+		            <div class="info_contents">
+		                <p>Identifiant de connexion</p>
+		                <p th:text="${user.loginId}"></p>
+		            </div>
+		            <div class="info_contents">
+		                <p>Mot de passe</p>
+		                <p th:text="${password}"></p>
+		            </div>
+		            <a th:href="@{/update(id=${user.id}, language=${option.language}, wheelchair=${option.wheelchair}, stroller=${option.stroller}, senior=${option.senior}, slope=${option.slope}, speed=${option.speed})}" class="info_contents">
+		                <p></p>
+		                <p>Modifier</p>
+		            </a>
+		        </li>
+		        <li>
+		            <h2>Accessibilité de l'itinéraire</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.wheelchair == 'true'}"><input class="access fr" type="checkbox" value="true" id="wheelchair" checked></th:block>
+		                    <th:block th:if="${option.wheelchair != 'true'}"><input class="access fr" type="checkbox" value="true" id="wheelchair"></th:block>
+		                    <label class="setting_label" for="wheelchair">Fauteuil roulant</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.stroller == 'true'}"><input class="access fr" type="checkbox" value="true" id="stroller" checked></th:block>
+		                    <th:block th:if="${option.stroller != 'true'}"><input class="access fr" type="checkbox" value="true" id="stroller"></th:block>
+		                    <label class="setting_label" for="stroller">Poussette</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.senior == 'true'}"><input class="access fr" type="checkbox" value="true" id="senior" checked></th:block>
+		                    <th:block th:if="${option.senior != 'true'}"><input class="access fr" type="checkbox" value="true" id="senior"></th:block>
+		                    <label class="setting_label" for="senior">Senior</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>Niveaux de pentes à éviter</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 1}"><input class="slope fr" name="slope-fr" type="radio" value="1" id="gentle" checked></th:block>
+		                    <th:block th:if="${option.slope != 1}"><input class="slope fr" name="slope-fr" type="radio" value="1" id="gentle"></th:block>
+		                    <label class="setting_label" for="gentle">Faible</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 2}"><input class="slope fr" name="slope-fr" type="radio" value="2" id="moderate" checked></th:block>
+		                    <th:block th:if="${option.slope != 2}"><input class="slope fr" name="slope-fr" type="radio" value="2" id="moderate"></th:block>
+		                    <label class="setting_label" for="moderate">Moyen</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 3}"><input class="slope fr" name="slope-fr" type="radio" value="3" id="steep" checked></th:block>
+		                    <th:block th:if="${option.slope != 3}"><input class="slope fr" name="slope-fr" type="radio" value="3" id="steep"></th:block>
+		                    <label class="setting_label" for="steep">Élevé</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>Vitesse de déplacement</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 1}"><input class="speed fr" name="speed-fr" type="radio" value="1" id="slow" checked></th:block>
+		                    <th:block th:if="${option.speed != 1}"><input class="speed fr" name="speed-fr" type="radio" value="1" id="slow"></th:block>
+		                    <label class="setting_label" for="slow">Lent</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 2}"><input class="speed fr" name="speed-fr" type="radio" value="2" id="normal" checked></th:block>
+		                    <th:block th:if="${option.speed != 2}"><input class="speed fr" name="speed-fr" type="radio" value="2" id="normal"></th:block>
+		                    <label class="setting_label" for="normal">Moyen</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 3}"><input class="speed fr" name="speed-fr" type="radio" value="3" id="fast" checked></th:block>
+		                    <th:block th:if="${option.speed != 3}"><input class="speed fr" name="speed-fr" type="radio" value="3" id="fast"></th:block>
+		                    <label class="setting_label" for="fast">Rapide</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>Déconnexion</h2>
+		            <button class="logout" type="button" name="logout" value="logout">
+		                <a th:href="@{/login}" style="text-decoration:none; color: black;">Déconnexion</a>
+		            </button>
+		        </li>
+		    </ul>
+		</div>
+		<div class="lang spanish">
+		    <ul>
+		        <li>
+		            <h2>Información de la cuenta</h2>
+		            <div class="info_contents">
+		                <p>Nombre de usuario</p>
+		                <p th:text="${user.userName}"></p>
+		            </div>
+		            <div class="info_contents">
+		                <p>ID de inicio de sesión</p>
+		                <p th:text="${user.loginId}"></p>
+		            </div>
+		            <div class="info_contents">
+		                <p>Contraseña</p>
+		                <p th:text="${password}"></p>
+		            </div>
+		            <a th:href="@{/update(id=${user.id}, language=${option.language}, wheelchair=${option.wheelchair}, stroller=${option.stroller}, senior=${option.senior}, slope=${option.slope}, speed=${option.speed})}" class="info_contents">
+		                <p></p>
+		                <p>Editar</p>
+		            </a>
+		        </li>
+		        <li>
+		            <h2>Accesibilidad de la ruta</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.wheelchair == 'true'}"><input class="access sp" type="checkbox" value="true" id="wheelchair" checked></th:block>
+		                    <th:block th:if="${option.wheelchair != 'true'}"><input class="access sp" type="checkbox" value="true" id="wheelchair"></th:block>
+		                    <label class="setting_label" for="wheelchair">Silla de ruedas</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.stroller == 'true'}"><input class="access sp" type="checkbox" value="true" id="stroller" checked></th:block>
+		                    <th:block th:if="${option.stroller != 'true'}"><input class="access sp" type="checkbox" value="true" id="stroller"></th:block>
+		                    <label class="setting_label" for="stroller">Cochecito</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.senior == 'true'}"><input class="access sp" type="checkbox" value="true" id="senior" checked></th:block>
+		                    <th:block th:if="${option.senior != 'true'}"><input class="access sp" type="checkbox" value="true" id="senior"></th:block>
+		                    <label class="setting_label" for="senior">Personas mayores</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>Niveles de pendientes a evitar</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 1}"><input class="slope sp" name="slope-sp" type="radio" value="1" id="gentle" checked></th:block>
+		                    <th:block th:if="${option.slope != 1}"><input class="slope sp" name="slope-sp" type="radio" value="1" id="gentle"></th:block>
+		                    <label class="setting_label" for="gentle">Bajo</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 2}"><input class="slope sp" name="slope-sp" type="radio" value="2" id="moderate" checked></th:block>
+		                    <th:block th:if="${option.slope != 2}"><input class="slope sp" name="slope-sp" type="radio" value="2" id="moderate"></th:block>
+		                    <label class="setting_label" for="moderate">Medio</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 3}"><input class="slope sp" name="slope-sp" type="radio" value="3" id="steep" checked></th:block>
+		                    <th:block th:if="${option.slope != 3}"><input class="slope sp" name="slope-sp" type="radio" value="3" id="steep"></th:block>
+		                    <label class="setting_label" for="steep">Alto</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>Velocidad de movimiento</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 1}"><input class="speed sp" name="speed-sp" type="radio" value="1" id="slow" checked></th:block>
+		                    <th:block th:if="${option.speed != 1}"><input class="speed sp" name="speed-sp" type="radio" value="1" id="slow"></th:block>
+		                    <label class="setting_label" for="slow">Lenta</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 2}"><input class="speed sp" name="speed-sp" type="radio" value="2" id="normal" checked></th:block>
+		                    <th:block th:if="${option.speed != 2}"><input class="speed sp" name="speed-sp" type="radio" value="2" id="normal"></th:block>
+		                    <label class="setting_label" for="normal">Media</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 3}"><input class="speed sp" name="speed-sp" type="radio" value="3" id="fast" checked></th:block>
+		                    <th:block th:if="${option.speed != 3}"><input class="speed sp" name="speed-sp" type="radio" value="3" id="fast"></th:block>
+		                    <label class="setting_label" for="fast">Rápida</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>Cerrar sesión</h2>
+		            <button class="logout" type="button" name="logout" value="logout">
+		                <a th:href="@{/login}" style="text-decoration:none; color: black;">Cerrar sesión</a>
+		            </button>
+		        </li>
+		    </ul>
+		</div>
+
+		<div class="lang korean">
+		    <ul>
+		        <li>
+		            <h2>계정 정보</h2>
+		            <div class="info_contents">
+		                <p>사용자 이름</p>
+		                <p th:text="${user.userName}"></p>
+		            </div>
+		            <div class="info_contents">
+		                <p>로그인 ID</p>
+		                <p th:text="${user.loginId}"></p>
+		            </div>
+		            <div class="info_contents">
+		                <p>비밀번호</p>
+		                <p th:text="${password}"></p>
+		            </div>
+		            <a th:href="@{/update(id=${user.id}, language=${option.language}, wheelchair=${option.wheelchair}, stroller=${option.stroller}, senior=${option.senior}, slope=${option.slope}, speed=${option.speed})}" class="info_contents">
+		                <p></p>
+		                <p>편집</p>
+		            </a>
+		        </li>
+		        <li>
+		            <h2>경로 접근성</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.wheelchair == 'true'}"><input class="access ko" type="checkbox" value="true" id="wheelchair" checked></th:block>
+		                    <th:block th:if="${option.wheelchair != 'true'}"><input class="access ko" type="checkbox" value="true" id="wheelchair"></th:block>
+		                    <label class="setting_label" for="wheelchair">휠체어</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.stroller == 'true'}"><input class="access ko" type="checkbox" value="true" id="stroller" checked></th:block>
+		                    <th:block th:if="${option.stroller != 'true'}"><input class="access ko" type="checkbox" value="true" id="stroller"></th:block>
+		                    <label class="setting_label" for="stroller">유모차</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.senior == 'true'}"><input class="access ko" type="checkbox" value="true" id="senior" checked></th:block>
+		                    <th:block th:if="${option.senior != 'true'}"><input class="access ko" type="checkbox" value="true" id="senior"></th:block>
+		                    <label class="setting_label" for="senior">고령자</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>피할 경사 수준</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 1}"><input class="slope ko" name="slope-ko" type="radio" value="1" id="gentle" checked></th:block>
+		                    <th:block th:if="${option.slope != 1}"><input class="slope ko" name="slope-ko" type="radio" value="1" id="gentle"></th:block>
+		                    <label class="setting_label" for="gentle">낮음</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 2}"><input class="slope ko" name="slope-ko" type="radio" value="2" id="moderate" checked></th:block>
+		                    <th:block th:if="${option.slope != 2}"><input class="slope ko" name="slope-ko" type="radio" value="2" id="moderate"></th:block>
+		                    <label class="setting_label" for="moderate">중간</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.slope == 3}"><input class="slope ko" name="slope-ko" type="radio" value="3" id="steep" checked></th:block>
+		                    <th:block th:if="${option.slope != 3}"><input class="slope ko" name="slope-ko" type="radio" value="3" id="steep"></th:block>
+		                    <label class="setting_label" for="steep">높음</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>이동 속도</h2>
+		            <div class="option_flex">
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 1}"><input class="speed ko" name="speed-ko" type="radio" value="1" id="slow" checked></th:block>
+		                    <th:block th:if="${option.speed != 1}"><input class="speed ko" name="speed-ko" type="radio" value="1" id="slow"></th:block>
+		                    <label class="setting_label" for="slow">느림</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 2}"><input class="speed ko" name="speed-ko" type="radio" value="2" id="normal" checked></th:block>
+		                    <th:block th:if="${option.speed != 2}"><input class="speed ko" name="speed-ko" type="radio" value="2" id="normal"></th:block>
+		                    <label class="setting_label" for="normal">중간</label>
+		                </div>
+		                <div class="option_container">
+		                    <th:block th:if="${option.speed == 3}"><input class="speed ko" name="speed-ko" type="radio" value="3" id="fast" checked></th:block>
+		                    <th:block th:if="${option.speed != 3}"><input class="speed ko" name="speed-ko" type="radio" value="3" id="fast"></th:block>
+		                    <label class="setting_label" for="fast">빠름</label>
+		                </div>
+		            </div>
+		        </li>
+		        <li>
+		            <h2>로그아웃</h2>
+		            <button class="logout" type="button" name="logout" value="logout">
+		                <a th:href="@{/login}" style="text-decoration:none; color: black;">로그아웃</a>
+		            </button>
+		        </li>
+		    </ul>
+		</div>
+	
+    </li>
+	<input type="hidden" id="userId" th:value="${user.id}">
+</body>
+</html>

@@ -1,0 +1,247 @@
+.hamburger {
+    width: 50px;
+    height: 100%;
+    margin: 30px 30px 0 0;
+    z-index: 1000;
+    display: block;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3.5px;
+    background-color: #151515;
+    position: relative;
+    transition: ease 0.4s;
+    display: block;
+}
+
+.hamburger span:nth-child(1) {
+    top: 148px;
+    left: calc(88vw - 45px);
+    transform: rotate(45deg);
+}
+
+.hamburger span:nth-child(2) {
+    top: 145px;
+    left: calc(88vw - 45px);
+    transform: rotate(-45deg);
+}
+
+.setting_container {
+    padding: 100px 12vw;
+	list-style: none;
+}
+
+.setting_container h1 {
+    font-size: 57px;
+}
+
+ul {
+    margin-top: 100px;
+}
+
+.to_delete{
+	position: relative;
+	margin-bottom: 55px;
+	padding-top: 30px;
+}
+
+.to_delete:before{
+	    content: "";
+	    display: block;
+	    width: 100%;
+	    height: 0.3px;
+	    background-color: #333;
+	    position: absolute;
+	    top:  220px;
+	    left: 0px;
+}
+
+.to_delete input {
+    height: 22px;
+    width: 22px;
+}
+
+
+
+ul > li {
+    position: relative;
+}
+
+ul > li:not(:last-child) {
+    margin-bottom: 55px;
+}
+
+ul > li:not(:first-child):before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 0.3px;
+    background-color: #333;
+    position: absolute;
+    top: -30px;
+    left: 0px;
+}
+
+li input {
+    height: 22px;
+    width: 22px;
+}
+
+
+
+h2 {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.info_contents {
+    display: flex;
+    text-decoration: none;
+}
+
+.info_edit {
+    display: flex;
+    text-decoration: none;
+}
+
+a, p {
+    font-size: 40px;
+}
+
+.option_flex {
+    display: flex;
+    font-size: 41px;
+}
+
+.option_container {
+    vertical-align: middle;
+}
+
+.setting_label {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+.info_contents p:nth-child(2) {
+    margin-left: 40px;
+}
+
+
+.lang_container {
+    display: flex;
+    align-items: center;
+}
+
+.lang_contents {
+    display: flex;
+    flex-direction: column;
+}
+
+.language_select {
+    font-size: 35px;
+    cursor: pointer;
+}
+
+.logout {
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.logout a {
+    display: block;
+    padding: 10px 25px;
+    font-size: 25px;
+}
+
+@media (min-width:1000px) {
+    .setting_container {
+        padding: 0px 20vw;
+    }
+
+    .setting_container h1 {
+        font-size: 30px;
+    }
+
+    ul {
+        margin-top: 50px;
+    }
+
+    h2 {
+        font-size: 23px;
+        margin-bottom: 10px;
+    }
+
+    a, p {
+        font-size: 15px;
+    }
+    
+    /* 追加 */
+    .setting_label {
+	    font-size: 16px;
+	}
+	
+	/* 追加 */
+	.info_contents p:nth-child(2) {
+	    margin-right: 450px;
+	}
+
+    .language_select {
+        font-size: 17px;
+    }
+
+    .hamburger {
+        width: 50px;
+        height: 100%;
+        margin: 30px 30px 0 0;
+        z-index: 1000;
+        display: block;
+    }
+    
+    .hamburger span {
+        width: 100%;
+        height: 3.5px;
+        background-color: #151515;
+        position: relative;
+        transition: ease 0.4s;
+        display: block;
+    }
+    
+    .hamburger span:nth-child(1) {
+        top: 35px;
+        left: calc(88vw - 155px);
+        transform: rotate(45deg);
+    }
+    
+    .hamburger span:nth-child(2) {
+        top: 32px;
+        left: calc(88vw - 155px);
+        transform: rotate(-45deg);
+    }
+
+    ul > li:not(:last-child) {
+        margin-bottom: 35px;
+    }
+    
+    ul > li:not(:first-child):before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 0.3px;
+        background-color: #333;
+        position: absolute;
+        top: -20px;
+        left: 0px;
+    }
+
+    .logout {
+        border-radius: 5px;
+    }
+
+    .logout a {
+        display: block;
+        padding: 5px 15px;
+        font-size: 15px;
+    }
+}

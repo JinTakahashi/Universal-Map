@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>UniversalGPS-test</title>
+	<link th:href="@{/css/reset.css}" rel="stylesheet">
+	<link th:href="@{/css/create_update_login.css}" rel="stylesheet">
+</head>
+<body>
+	<div class="account_container">
+		<h1>Creat a New Account</h1>
+		<form th:action = "@{/create}" method = "post" th:object = "${userCreateForm}">
+			<div>
+				<label for = "userName">UserName</label>
+				<input id = "userName" type = "text" th:field = "*{userName}" required>
+			</div>
+			<div>
+				<label for = "loginId">LoginID</label>
+				<input id = "loginId" type = "text" th:field = "*{loginId}" required>
+			</div>
+			<div>
+				<label for = "password">Password</label>
+				<input id = "password" type = "text" th:field = "*{password}" required>
+			</div>
+			<div class="form_bottom">
+				<div>
+					<input type = "submit" value = "Create">
+				</div>
+				<div>
+					<a th:href="@{/login}">Back to login form</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>
